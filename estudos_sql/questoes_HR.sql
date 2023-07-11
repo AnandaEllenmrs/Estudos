@@ -32,7 +32,7 @@ right JOIN hr.employees b
 ON a.department_id = b.department_id
 WHERE B.JOB_ID = 'SA_MAN';
 
----5. Mostre o número do departamento, o nome do departamento e o número de funcionários
+---5.Mostre o número do departamento, o nome do departamento e o número de funcionários
 --trabalhando em cada departamento que:
 
 --a. Inclua menos de 3 funcionários:
@@ -92,7 +92,7 @@ from hr.employees a
 --group by a.employee_id, a.last_name, a.salary,b.department_id;
 
 
----7. Crie uma visão geral de aniversários com base na data de admissão dos funcionários.
+---7.Crie uma visão geral de aniversários com base na data de admissão dos funcionários.
 --Classifique os aniversários em ordem crescente.
 
 SELECT A.FIRST_NAME, to_char(A.HIRE_DATE,'DD" DE "MONTH') AS aniversários
@@ -114,12 +114,12 @@ SELECT a.department_id,a.employee_id, a.salary,
  From hr.employees a
  order by a.department_id; 
 
----9. Altere a sessão para definir NLS_DATE_FORMAT como DD-MON-YYYY
+---9.Altere a sessão para definir NLS_DATE_FORMAT como DD-MON-YYYY
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY';
 
 
----10. Crie uma consulta para exibir os sobrenomes, o mês da data de admissão e a data de
+---10.Crie uma consulta para exibir os sobrenomes, o mês da data de admissão e a data de
 admissão dos funcionários admitidos no mês de janeiro, independente do ano de admissão
 
 SELECT A.LAST_NAME,A.HIRE_DATE
@@ -152,7 +152,7 @@ where a.department_id > 80
 --group by a.salary,b.department_id,a.job_id,b.location_id;
 
 
----12. Crie uma consulta que exiba os seguintes agrupamentos:
+---12.Crie uma consulta que exiba os seguintes agrupamentos:
 --ID de departamento, ID de cargo
 --ID de cargo, ID de gerente
 --A consulta deve calcular os salários máximo e mínimo de cada um desses grupos.
@@ -162,7 +162,7 @@ from hr.employees a
 group by a.department_id,a.job_id, a.manager_id;
 
 
----13. Crie uma consulta para exibir os três funcionários que ganham mais na tabela EMPLOYEES
+---13.Crie uma consulta para exibir os três funcionários que ganham mais na tabela EMPLOYEES
 --Exiba seus sobrenomes e salários
 
 select * from (SELECT a.last_name,MAX(A.SALARY) AS SALY 
@@ -172,7 +172,7 @@ ORDER BY SALY DESC)
 WHERE ROWNUM < 4;
 
 
----14. Crie uma consulta para exibir o ID e os sobrenomes dos funcionários que trabalham no estado
+---14.Crie uma consulta para exibir o ID e os sobrenomes dos funcionários que trabalham no estado
 --da Califórnia.
 --Dica: use subconsultas escalares.
 
@@ -194,7 +194,7 @@ where b.location_id in (select c.location_id from hr.locations c where c.state_p
 
 
 
----15. Crie uma consulta para exibir os IDs dos cargos cujo salário máximo esteja acima da metade
+---15.Crie uma consulta para exibir os IDs dos cargos cujo salário máximo esteja acima da metade
 --do salário máximo em toda a empresa. Use a cláusula WITH para criar essa consulta.
 --Nomeie a consulta como MAX_SAL_CALC
 
@@ -225,7 +225,7 @@ select JOB_ID, salary, metade_do_salario_maximo
 from metade
 where salary > metade_do_salario_maximo;
 
----16.)Crie uma instrução SQL para exibir o número, o sobrenome, a data inicial e o salário do
+---16.Crie uma instrução SQL para exibir o número, o sobrenome, a data inicial e o salário do
 --funcionário, mostrando:
 
 --a.)Os subordinados diretos de de  De Haan
@@ -243,7 +243,7 @@ select *
 from hr.employees a
 where a.manager_id = 103;
 
----17. Crie uma consulta hierárquica para exibir o número do funcionário, o número do gerente
+---17.Crie uma consulta hierárquica para exibir o número do funcionário, o número do gerente
 --e o sobrenome de todos os funcionários que estão dois níveis abaixo do funcionário De Haan
 --(número de funcionário 102). Também exiba o nível do funcionário.
 
@@ -253,7 +253,7 @@ start with m.last_name = 'De Haan'
 connect by prior m.employee_id = m.manager_id;
 
 
----18. Produza um relatório hierárquico para exibir o número do funcionário, o número do gerente,
+---18.Produza um relatório hierárquico para exibir o número do funcionário, o número do gerente,
 --a pseudocoluna LEVEL e o sobrenome do funcionário. Para cada linha da tabela EMPLOYEES,
 --você deve imprimir uma estrutura em árvore mostrando o funcionário, o gerente do funcionário,
 --o gerente do gerente e assim por diante. Use recuos para a coluna NOME.
@@ -272,7 +272,7 @@ start with m.last_name = 'De Haan'
 connect by prior m.employee_id = m.manager_id;
 
 
----19. Crie uma consulta para fazer o seguinte:
+---19.Crie uma consulta para fazer o seguinte:
 --Recuperar os detalhes do ID do funcionário, da data de admissão, do salário e do ID do
 --gerente dos funcionários cujo ID seja maior ou igual a 200 na tabela EMPLOYEES.
 
