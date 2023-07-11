@@ -6,7 +6,7 @@ from hr.employees a,hr.employees b
 where a.manager_id = b.employee_id
 and b.salary > 15000;
 
- 
+
 ---2.Mostre o número do departamento, o nome, o número de funcionários e o salário médio de
 --todos os departamentos juntamente com os nomes, os salários e os cargos dos funcionários
 --que trabalham em cada departamento.
@@ -16,12 +16,14 @@ from hr.departments a, hr.employees b
 where a.department_id = b.department_id
 group by a.department_name,a.department_id, b.job_id;
 
+
 ---3.Mostre o número do departamento e o menor salário do departamento com o maior
 --salário médio.
 
 select a.department_id, min (a.salary) MENOR_SALARIO, avg (a.salary) medio
 from hr.employees a
 group by a.department_id;
+
 
 ---4.Mostre os números, os nomes e os locais dos departamentos em que não há vendedores
 --trabalhando
@@ -31,6 +33,7 @@ from hr.departments a
 right JOIN hr.employees b
 ON a.department_id = b.department_id
 WHERE B.JOB_ID = 'SA_MAN';
+
 
 ---5.Mostre o número do departamento, o nome do departamento e o número de funcionários
 --trabalhando em cada departamento que:
@@ -47,8 +50,6 @@ inner join hr.employees b
 on a.department_id = b.department_id
 group by a.department_id, a.department_name)
 where qtd < 3;
-
-
 
 --b. Tenha o maior número de funcionários:
 
@@ -91,13 +92,14 @@ from hr.employees a
 --on a.EMPLOYEE_ID= b.EMPLOYEE_ID
 --group by a.employee_id, a.last_name, a.salary,b.department_id;
 
-
+ 
 ---7.Crie uma visão geral de aniversários com base na data de admissão dos funcionários.
 --Classifique os aniversários em ordem crescente.
 
 SELECT A.FIRST_NAME, to_char(A.HIRE_DATE,'DD" DE "MONTH') AS aniversários
 FROM HR.EMPLOYEES A
 ORDER BY A.HIRE_DATE;
+
 
 ---8.Crie uma consulta composta para produzir uma lista de funcionários que mostre percentuais de
 --aumento, IDs de funcionários e aumento de salário antigo e de salário novo. Os funcionários
@@ -114,6 +116,7 @@ SELECT a.department_id,a.employee_id, a.salary,
  From hr.employees a
  order by a.department_id; 
 
+
 ---9.Altere a sessão para definir NLS_DATE_FORMAT como DD-MON-YYYY
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY';
@@ -125,6 +128,7 @@ admissão dos funcionários admitidos no mês de janeiro, independente do ano de
 SELECT A.LAST_NAME,A.HIRE_DATE
 FROM HR.EMPLOYEES A 
 WHERE extract(month from A.HIRE_DATE) = 1;
+
 
 ---11. Crie uma consulta para exibir os seguintes itens referentes aos departamentos cujo ID seja
 -- maior que 80:
@@ -151,7 +155,7 @@ where a.department_id > 80
 --on a.EMPLOYEE_ID= b.EMPLOYEE_ID 
 --group by a.salary,b.department_id,a.job_id,b.location_id;
 
-
+ 
 ---12.Crie uma consulta que exiba os seguintes agrupamentos:
 --ID de departamento, ID de cargo
 --ID de cargo, ID de gerente
@@ -184,14 +188,13 @@ inner join hr.locations c
 ON b.location_id = c.location_id
 where c.STATE_PROVINCE = 'California';
 
----OR a (subconsulta)
+--OR a (subconsulta)
 
 select a.employee_id, a.last_name, b.location_id
 from hr.employees a
 inner join hr.departments b
 on a.department_id = b.department_id
 where b.location_id in (select c.location_id from hr.locations c where c.state_province = 'California');
-
 
 
 ---15.Crie uma consulta para exibir os IDs dos cargos cujo salário máximo esteja acima da metade
@@ -215,7 +218,6 @@ select x.job_id, x.salary
 from hr.employees x, metade
 where x.salary > metade.metade_do_salario_maximo;
 
-
 with metade as (
 select y.job_id, max(y.salary)/2 as metade_do_salario_maximo, y.salary
 from hr.employees y
@@ -224,6 +226,7 @@ group by y.job_id, y.salary
 select JOB_ID, salary, metade_do_salario_maximo
 from metade
 where salary > metade_do_salario_maximo;
+
 
 ---16.Crie uma instrução SQL para exibir o número, o sobrenome, a data inicial e o salário do
 --funcionário, mostrando:
@@ -234,7 +237,6 @@ select a.employee_id,a.last_name,a.hire_date, a.salary
 from hr.employees a
 where a.last_name = 'De Haan';
 
-
 --b.)A árvore da organização sob De Haan (número de funcionário 102)
 
 SELECT * FROM HR.EMPLOYEES;
@@ -242,6 +244,7 @@ SELECT * FROM HR.EMPLOYEES;
 select * 
 from hr.employees a
 where a.manager_id = 103;
+
 
 ---17.Crie uma consulta hierárquica para exibir o número do funcionário, o número do gerente
 --e o sobrenome de todos os funcionários que estão dois níveis abaixo do funcionário De Haan
