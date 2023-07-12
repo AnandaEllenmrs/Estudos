@@ -18,7 +18,7 @@ Objetivos do Projeto:
 
 Aqui, você encontrará uma coleção de scripts repleta de desafios de programação que utilizei para aprimorar minhas habilidades na linguagem.
 
-* O objetivo principal deste repositório é aprimorar minhas habilidades de programação em Python por meio da resolução de desafios. Cada desafio apresenta um conceito ou problema único, fornecendo um ambiente estimulante e divertido para aprender e aplicar minhas habilidades em Python.
+* O objetivo principal deste repositório é aprimorar minhas habilidades de programação em Python por meio da resolução de desafios. Cada desafio apresenta um conceito ou problema único, fornecendo um ambiente estimulante para aprender e aplicar minhas habilidades em Python.
 
 * Sinta-se à vontade para explorar o código e testar os diferentes desafios disponíveis. Cada desafio está contido em seu próprio script, acompanhado de instruções claras no início do arquivo. Execute os scripts em um ambiente Python de sua preferência e veja as soluções propostas em ação.
 
